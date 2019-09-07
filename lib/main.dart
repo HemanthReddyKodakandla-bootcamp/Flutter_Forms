@@ -195,6 +195,7 @@ class _ShippingPageWidgetState extends State<ShippingPageWidget> {
       child: Column(
         children: <Widget>[
           TextField(
+            controller: shipperController,
             decoration: new InputDecoration(
               focusColor: const Color(0xffff6771),
               border: OutlineInputBorder(
@@ -230,6 +231,7 @@ class _ShippingPageWidgetState extends State<ShippingPageWidget> {
             ),
           ),
           TextField(
+            controller: locationController,
             decoration: new InputDecoration(
               focusColor: const Color(0xffff6771),
               border: OutlineInputBorder(
@@ -268,6 +270,7 @@ class _ShippingPageWidgetState extends State<ShippingPageWidget> {
             height: 20.0,
           ),
           TextField(
+            controller: bolController,
             decoration: new InputDecoration(
               focusColor: const Color(0xffff6771),
               border: OutlineInputBorder(
