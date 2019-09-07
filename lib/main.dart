@@ -26,11 +26,32 @@ class _ShippingPageWidgetState extends State<ShippingPageWidget> {
   String selectedTransitItem = "LTL";
   String requestedPickUpTime = "LTL";
   String actualPickUPTime = "DTL";
+  TextEditingController shipperController = TextEditingController();
+  TextEditingController locationController = TextEditingController();
+  TextEditingController bolController = TextEditingController();
+
   bool pickUpFromConstruction = false;
   bool pickUpFromCourier = false;
   bool pickUpFromDrayage = false;
   bool pickUpFromDroppedTrailer = false;
   bool pickUpFromInside = false;
+
+  Map shipmentForm;
+
+  submitShipmentForm(){
+
+     shipmentForm = {
+      "shipper": shipperController.text,
+       "location": locationController.text,
+       "bol": bolController.text,
+       "service_mode": selectedServiceItem,
+       "transit_mode": selectedTransitItem,
+       "pickup_service": "",
+       "data_pickup_requested": requestedPickUpTime,
+       "actual_pickup": actualPickUPTime
+    };
+     print("Response ${shipmentForm}");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -598,6 +619,7 @@ class _ShippingPageWidgetState extends State<ShippingPageWidget> {
           RaisedButton(
             onPressed: () {
               debugPrint('Back Button Pressed');
+              submitShipmentForm();
             },
             child: Text(
               'Next',
