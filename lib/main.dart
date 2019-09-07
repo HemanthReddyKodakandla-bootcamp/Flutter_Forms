@@ -23,8 +23,9 @@ class ShippingPageWidget extends StatefulWidget {
 class _ShippingPageWidgetState extends State<ShippingPageWidget> {
   List serviceData = ["LTL", "DTL", "RTL"];
   String selectedServiceItem = "LTL";
-  String requestedPickUpTime;
-  String actualPickUPTime;
+  String selectedTransitItem = "LTL";
+  String requestedPickUpTime = "LTL";
+  String actualPickUPTime = "DTL";
   bool pickUpFromConstruction = false;
   bool pickUpFromCourier = false;
   bool pickUpFromDrayage = false;
@@ -176,7 +177,7 @@ class _ShippingPageWidgetState extends State<ShippingPageWidget> {
             decoration: new InputDecoration(
               focusColor: const Color(0xffff6771),
               border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                  borderRadius: BorderRadius.all(Radius.circular(0.0)),
                   borderSide: BorderSide(style: BorderStyle.solid, width: 1.0)),
               contentPadding: EdgeInsets.all(15.0),
               filled: true,
@@ -211,7 +212,7 @@ class _ShippingPageWidgetState extends State<ShippingPageWidget> {
             decoration: new InputDecoration(
               focusColor: const Color(0xffff6771),
               border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                  borderRadius: BorderRadius.all(Radius.circular(0.0)),
                   borderSide: BorderSide(style: BorderStyle.solid, width: 1.0)),
               contentPadding: EdgeInsets.all(15.0),
               filled: true,
@@ -249,7 +250,7 @@ class _ShippingPageWidgetState extends State<ShippingPageWidget> {
             decoration: new InputDecoration(
               focusColor: const Color(0xffff6771),
               border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                  borderRadius: BorderRadius.all(Radius.circular(0.0)),
                   borderSide: BorderSide(style: BorderStyle.solid, width: 1.0)),
               contentPadding: EdgeInsets.all(15.0),
               filled: true,
@@ -302,7 +303,7 @@ class _ShippingPageWidgetState extends State<ShippingPageWidget> {
                               focusColor: const Color(0xffff6771),
                               border: OutlineInputBorder(
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(5.0)),
+                                      BorderRadius.all(Radius.circular(0.0)),
                                   borderSide: BorderSide(
                                       style: BorderStyle.none, width: 0.0)),
                               contentPadding:
@@ -323,6 +324,11 @@ class _ShippingPageWidgetState extends State<ShippingPageWidget> {
                                       fontWeight: FontWeight.w600),
                                 ));
                           }).toList(),
+                          onChanged: (String value){
+                            setState(() {
+                              selectedServiceItem = value;
+                            });
+                          },
                           validator: (String value) {
                             if (value == null) {
                               return 'Please select service mode';
@@ -357,12 +363,12 @@ class _ShippingPageWidgetState extends State<ShippingPageWidget> {
                       width: MediaQuery.of(context).size.width * 0.45,
                       child: Container(
                         child: DropdownButtonFormField<String>(
-                          value: selectedServiceItem,
+                          value: selectedTransitItem,
                           decoration: new InputDecoration(
                               focusColor: const Color(0xffff6771),
                               border: OutlineInputBorder(
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(5.0)),
+                                      BorderRadius.all(Radius.circular(0.0)),
                                   borderSide: BorderSide(
                                       style: BorderStyle.none, width: 0.0)),
                               contentPadding:
@@ -383,6 +389,11 @@ class _ShippingPageWidgetState extends State<ShippingPageWidget> {
                                       fontWeight: FontWeight.w600),
                                 ));
                           }).toList(),
+                          onChanged: (String value){
+                            setState(() {
+                              selectedTransitItem = value;
+                            });
+                          },
                           validator: (String value) {
                             if (value == null) {
                               return 'Please select transit service';
@@ -431,7 +442,7 @@ class _ShippingPageWidgetState extends State<ShippingPageWidget> {
                               focusColor: const Color(0xffff6771),
                               border: OutlineInputBorder(
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(5.0)),
+                                      BorderRadius.all(Radius.circular(0.0)),
                                   borderSide: BorderSide(
                                       style: BorderStyle.none, width: 0.0)),
                               contentPadding:
@@ -452,6 +463,11 @@ class _ShippingPageWidgetState extends State<ShippingPageWidget> {
                                       fontWeight: FontWeight.w600),
                                 ));
                           }).toList(),
+                          onChanged: (String value){
+                            setState(() {
+                              requestedPickUpTime = value;
+                            });
+                          },
                           validator: (String value) {
                             if (value == null) {
                               return 'Please select service mode';
@@ -491,7 +507,7 @@ class _ShippingPageWidgetState extends State<ShippingPageWidget> {
                               focusColor: const Color(0xffff6771),
                               border: OutlineInputBorder(
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(5.0)),
+                                      BorderRadius.all(Radius.circular(0.0)),
                                   borderSide: BorderSide(
                                       style: BorderStyle.none, width: 0.0)),
                               contentPadding:
@@ -512,6 +528,11 @@ class _ShippingPageWidgetState extends State<ShippingPageWidget> {
                                       fontWeight: FontWeight.w600),
                                 ));
                           }).toList(),
+                          onChanged: (String value){
+                            setState(() {
+                              actualPickUPTime = value;
+                            });
+                          },
                           validator: (String value) {
                             if (value == null) {
                               return 'Please select actual pickup time';
